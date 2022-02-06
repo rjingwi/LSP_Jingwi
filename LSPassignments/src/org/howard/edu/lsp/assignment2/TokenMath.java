@@ -13,6 +13,7 @@ public class TokenMath {
 			String input = scanner.nextLine();
 			if (input.equals("Goodbye")) {
 				keepgoing = false;
+				scanner.close();
 			}
 			else{
 				String[] tokens = input.split(" ");
