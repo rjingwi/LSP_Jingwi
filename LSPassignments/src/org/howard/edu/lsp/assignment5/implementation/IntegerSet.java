@@ -69,8 +69,7 @@ public class IntegerSet  {
 	}; 
 
 /* Returns the smallest item in the set; Throws a IntegerSetException if the set is empty
- */
-	public int smallest() throws Exception{
+ */	public int smallest() throws Exception{
 		if (!IntSet.isEmpty()) {
 			int smallest = IntSet.get(0);
 			for(int i = 0;i < IntSet.size();i++) {
