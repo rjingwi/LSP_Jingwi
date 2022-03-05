@@ -3,21 +3,24 @@ import java.util.ArrayList;
 
 
 public class IntegerSet  {
-	// Hint: probably best to use an array list.  You will need to do a little research
+	/* Array List is used for Set data 
+	 */
 	private ArrayList<Integer> IntSet = new ArrayList<Integer>();
 
 	// Default Constructor
 	public IntegerSet() {}
 
-	// Clears the internal representation of the set
+	/* Clears the internal representation of the set
+	 */
 	public void clear() {
 		IntSet.clear();
 	};
 
-// Returns the length of the set
+	/* Returns the length of the set
+	 */
 	public int length() {
 		return IntSet.size();
-	}; // returns the length
+	};
 
 /*
               * Returns true if the 2 sets are equal, false otherwise;
@@ -37,7 +40,8 @@ public class IntegerSet  {
 		return true;
 	}; 
 
-// Returns true if the set contains the value, otherwise false
+/* Returns true if the set contains the value, otherwise false
+ */
 	public boolean contains(int value) {
 		if (IntSet.contains(value)) {
 			return true;
@@ -47,7 +51,8 @@ public class IntegerSet  {
 		}
 		};
 
-// Returns the largest item in the set; Throws a IntegerSetException if the set is empty 
+/* Returns the largest item in the set; Throws a IntegerSetException if the set is empty
+ */
 	public int largest() throws Exception{
 		if (!IntSet.isEmpty()) {
 			int largest = IntSet.get(0);
@@ -63,7 +68,8 @@ public class IntegerSet  {
 		}
 	}; 
 
-// Returns the smallest item in the set; Throws a IntegerSetException if the set is empty
+/* Returns the smallest item in the set; Throws a IntegerSetException if the set is empty
+ */
 	public int smallest() throws Exception{
 		if (!IntSet.isEmpty()) {
 			int smallest = IntSet.get(0);
@@ -79,21 +85,24 @@ public class IntegerSet  {
 		}
 	}; 
 
-	// Adds an item to the set or does nothing it already there	
+	/* Adds an item to the set or does nothing it already there
+	 */
  	public void add(int item) {
  		if(!IntSet.contains(item)) {
  			IntSet.add(item);
  		}
- 	}; // adds item to the set or does nothing if it is in set
+ 	};
 
-	// Removes an item from the set or does nothing if not there
+	/* Removes an item from the set or does nothing if not there
+	 */
  	public void remove(int item) {
  		if(IntSet.contains(item)) {
  			IntSet.remove(IntSet.indexOf(item));
  		}
  	};
 
-// Set union
+ 	/* Gives all elements of both sets joined
+ 	 */
  	public void union(IntegerSet intSetb) {
  		for(int i =0; i < intSetb.IntSet.size();i++) {
  			if(!IntSet.contains(intSetb.IntSet.get(i))){
@@ -102,7 +111,8 @@ public class IntegerSet  {
  		}
  	};
 
-// Set intersection
+ 	/* Gives all elements that are in both sets
+ 	 */
  	public void intersect(IntegerSet intSetb) {
  		ArrayList<Integer> intersection = new ArrayList<Integer>();
  		for(int i =0; i < intSetb.IntSet.size();i++) {
@@ -114,7 +124,8 @@ public class IntegerSet  {
  		IntSet = intersection;
  	}; 
 
-// Set difference, i.e., s1 –s2
+ 	/* Removes the elements that are in the second set from the first set
+ 	 */
  	public void difference(IntegerSet intSetb) {
  		ArrayList<Integer> difference = new ArrayList<Integer>();
  		for(int i = 0;i<IntSet.size();i++) {
@@ -123,16 +134,18 @@ public class IntegerSet  {
  			}
  		}
  		IntSet = difference;
- 	}; // set difference, i.e. s1 - s2
+ 	};
 
-// Returns true if the set is empty, false otherwise
+ 	/* Returns true if the set is empty, false otherwise
+ 	 */
  	public boolean isEmpty(){
  		return IntSet.isEmpty();
  	}; 
 
-// Return String representation of your set
+ 	/* Returns string representation of the set
+ 	 */
  	public String toString() {
  		return IntSet.toString();
- 	};	// return String representation of your set
+ 	};
 }
 
