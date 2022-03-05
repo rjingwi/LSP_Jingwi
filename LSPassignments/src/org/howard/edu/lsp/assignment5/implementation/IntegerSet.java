@@ -7,7 +7,7 @@ public class IntegerSet  {
 	private ArrayList<Integer> IntSet = new ArrayList<Integer>();
 
 	// Default Constructor
-	IntegerSet() {}
+	public IntegerSet() {}
 
 	// Clears the internal representation of the set
 	public void clear() {
@@ -24,12 +24,17 @@ public class IntegerSet  {
  * Two sets are equal if they contain all of the same values in ANY order.
 */
 	public boolean equals(IntegerSet b) {
-		if (IntSet == b.IntSet) {
-			return true;
-		}
-		else {
+		if(!(IntSet.size() == b.length())) {
 			return false;
 		}
+		else {
+			for(int i = 0;i<b.length();i++) {
+				if(!IntSet.contains(b.IntSet.get(i))) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}; 
 
 // Returns true if the set contains the value, otherwise false
@@ -99,23 +104,25 @@ public class IntegerSet  {
 
 // Set intersection
  	public void intersect(IntegerSet intSetb) {
- 		ArrayList<Integer> Intersection = new ArrayList<Integer>();
+ 		ArrayList<Integer> intersection = new ArrayList<Integer>();
  		for(int i =0; i < intSetb.IntSet.size();i++) {
- 			if((IntSet.contains(intSetb.IntSet.get(i))) && (!Intersection.contains(intSetb.IntSet.get(i)))){
- 				Intersection.add(intSetb.IntSet.get(i));
+ 			if((IntSet.contains(intSetb.IntSet.get(i))) && (!intersection.contains(intSetb.IntSet.get(i)))){
+ 				intersection.add(intSetb.IntSet.get(i));
  			}
  		}
  		IntSet.clear();
- 		IntSet = Intersection;
+ 		IntSet = intersection;
  	}; 
 
 // Set difference, i.e., s1 –s2
- 	public void diff(IntegerSet intSetb) {
- 		for(int i =0; i > intSetb.IntSet.size();i++) {
- 			if(IntSet.contains(intSetb.IntSet.get(i))){
- 				IntSet.remove(IntSet.indexOf(intSetb.IntSet.get(i)));
+ 	public void difference(IntegerSet intSetb) {
+ 		ArrayList<Integer> difference = new ArrayList<Integer>();
+ 		for(int i = 0;i<IntSet.size();i++) {
+ 			if(!intSetb.contains(IntSet.get(i))){
+ 				difference.add(IntSet.get(i));
  			}
  		}
+ 		IntSet = difference;
  	}; // set difference, i.e. s1 - s2
 
 // Returns true if the set is empty, false otherwise
