@@ -21,7 +21,7 @@ class MapUtilitiesTest {
 	}
 	
 	@Test
-	void basicfunctionality() throws NullMapException{
+	void basicFunctionality() throws NullMapException{
 		HashMap<String,String> hashmap1 = new HashMap();
 		HashMap<String,String> hashmap2 = new HashMap();
 		hashmap1.put("Alice", "Healthy");
@@ -34,6 +34,32 @@ class MapUtilitiesTest {
 		hashmap2.put("Bob", "Happy");
 		var maputils = new MapUtilities();
 		assertEquals(2,(maputils.commonKeyValuePairs(hashmap1,hashmap2)));
+	}
+	
+	@Test
+	void noValuesInCommon() throws NullMapException{
+		HashMap<String,String> hashmap1 = new HashMap();
+		HashMap<String,String> hashmap2 = new HashMap();
+		hashmap1.put("Alice", "Healthy");
+		hashmap1.put("Chuck", "Fine");
+		hashmap2.put("Felix", "Healthy");
+		hashmap2.put("Bob", "Happy");
+		var maputils = new MapUtilities();
+		assertEquals(0,(maputils.commonKeyValuePairs(hashmap1,hashmap2)));
+	}
+	
+	@Test
+	void allValuesInCommon() throws NullMapException{
+		HashMap<String,String> hashmap1 = new HashMap();
+		HashMap<String,String> hashmap2 = new HashMap();
+		hashmap1.put("Mary", "Ecstatic");
+		hashmap1.put("Bob", "Happy");
+		hashmap1.put("Felix", "Healthy");
+		hashmap2.put("Mary", "Ecstatic");
+		hashmap2.put("Bob", "Happy");
+		hashmap2.put("Felix", "Healthy");
+		var maputils = new MapUtilities();
+		assertEquals(3,(maputils.commonKeyValuePairs(hashmap1,hashmap2)));
 	}
 	
 	@Test
