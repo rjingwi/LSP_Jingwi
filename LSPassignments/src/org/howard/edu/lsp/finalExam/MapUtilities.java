@@ -2,20 +2,25 @@ package org.howard.edu.lsp.finalExam;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Iterator;
+import java.util.Set;
 
 public class MapUtilities {
 	
-	public static int commonKeyValuePairs(HashMap<String, String> map1,HashMap<String, String> map2) {
+	public static int commonKeyValuePairs(HashMap<String, String> map1,HashMap<String, String> map2) throws NullMapException {
+		int result = 0;
 		Iterator<Entry<String,String>> iterator = map1.entrySet().iterator();
 		while (iterator.hasNext()) {
 			Entry<String,String> entry = iterator.next();
-			System.out.println(entry.getKey());
-			System.out.println(entry.getValue());
+			if(map2.keySet().contains(entry.getKey())) {
+				if((map1.get(entry.getKey()) == map2.get(entry.getKey()))){
+					result ++;
+				}
+			}
 		}
-		return 0;
+		return result;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NullMapException {
 		HashMap<String,String> hashmap1 = new HashMap();
 		HashMap<String,String> hashmap2 = new HashMap();
 		hashmap1.put("Alice", "Healthy");
@@ -27,7 +32,7 @@ public class MapUtilities {
 		hashmap2.put("Felix", "Healthy");
 		hashmap2.put("Bob", "Happy");
 		
-		commonKeyValuePairs(hashmap1,hashmap2);
+		System.out.print(commonKeyValuePairs(hashmap1,hashmap2));
 		
 	}
 
