@@ -35,5 +35,13 @@ class MapUtilitiesTest {
 		var maputils = new MapUtilities();
 		assertEquals(2,(maputils.commonKeyValuePairs(hashmap1,hashmap2)));
 	}
-
+	
+	@Test
+	void testExpectedException() {
+		var maputils = new MapUtilities();
+		HashMap<String,String> hashmap1 = new HashMap();
+		hashmap1.put("Alice", "Healthy");
+		hashmap1.put("Mary", "Ecstatic");
+		assertThrows(NullMapException.class,()-> maputils.commonKeyValuePairs(hashmap1,null));
+	}
 }

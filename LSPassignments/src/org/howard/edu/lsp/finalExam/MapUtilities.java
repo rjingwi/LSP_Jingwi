@@ -8,16 +8,11 @@ public class MapUtilities {
 	
 	public static int commonKeyValuePairs(HashMap<String, String> map1,HashMap<String, String> map2) throws NullMapException {
 		
-		try {
-			if ((map1 == null) || (map2 == null)){
-				throw new NullMapException();
-			}
-		}
-		catch(NullMapException e){
-			System.out.print(e.getMessage());
+		if ((map1 == null) || (map2 == null)){
+			throw new NullMapException("One or both maps are null!");
 		}
 		
-		if(map1.isEmpty() || map2.isEmpty()) {
+		else if (map1.isEmpty() || map2.isEmpty()) {
 			return 0;
 		}
 		
