@@ -7,9 +7,16 @@ import java.util.Set;
 public class MapUtilities {
 	
 	public static int commonKeyValuePairs(HashMap<String, String> map1,HashMap<String, String> map2) throws NullMapException {
-		if ((map1 == null) || (map2 == null)){
-			throw new NullMapException();
+		
+		try {
+			if ((map1 == null) || (map2 == null)){
+				throw new NullMapException();
+			}
 		}
+		catch(NullMapException e){
+			System.out.print(e.getMessage());
+		}
+		
 		if(map1.isEmpty() || map2.isEmpty()) {
 			return 0;
 		}
@@ -25,22 +32,6 @@ public class MapUtilities {
 			}
 		}
 		return result;
-	}
-
-	public static void main(String[] args) throws NullMapException {
-		HashMap<String,String> hashmap1 = new HashMap();
-		HashMap<String,String> hashmap2 = new HashMap();
-		hashmap1.put("Alice", "Healthy");
-		hashmap1.put("Mary", "Ecstatic");
-		hashmap1.put("Bob", "Happy");
-		hashmap1.put("Chuck", "Fine");
-		hashmap1.put("Felix", "Sick");
-		hashmap2.put("Mary", "Ecstatic");
-		hashmap2.put("Felix", "Healthy");
-		hashmap2.put("Bob", "Happy");
-		
-		System.out.print(commonKeyValuePairs(hashmap1,hashmap2));
-		
 	}
 
 }
